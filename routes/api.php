@@ -14,21 +14,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('products', function(){
-    return Products::all();
-});
-Route::get('products/{id}', function($id){
-    return Products::find($id);
-});
-Route::post('products', function(Request $request){
-    return Products::create($request->all());
-});
-Route::put('products/{id}', function(Request $request, $id){
-    $article = Products::findOrFail($id);
-    $article->update($request->all());
-    return $article;
-});
-Route::delete('products/{id}', function($id){
-    Products::find($id)->delete();
-    return 204;
-});
+Route::get('products', 'ProductsController@index');
+Route::get('products/{product}', 'ProductsController@show');
+Route::post('products', 'ProductsController@store');
+Route::put('products/{product}', 'ProductsController@update');
+Route::delete('products/{product}', 'ProductsController@delete');
