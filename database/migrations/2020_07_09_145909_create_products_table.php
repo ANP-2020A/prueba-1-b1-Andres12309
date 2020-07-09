@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->double('price');
-            $table->enum('status', ['active', 'delete']);
+            $table->enum('status', ['active', 'deleted']);
             $table->timestamps();
         });
     }
