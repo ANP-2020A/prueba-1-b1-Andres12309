@@ -1,5 +1,6 @@
 <?php
 
+use App\Products;
 use Illuminate\Http\Request;
 
 /*
@@ -13,6 +14,21 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('products', function(){
+    return Products::all();
+});
+Route::get('products/{id}', function($id){
+    return Products::find($id);
+});
+Route::post('products', function(Request $request){
+    return Products::create($request->all());
+});
+Route::put('products/{id}', function(Request $request, $id){
+    $article = Products::findOrFail($id);
+    $article->update($request->all());
+    return $article;
+});
+Route::delete('products/{id}', function($id){
+    Products::find($id)->delete();
+    return 204;
 });
