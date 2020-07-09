@@ -1,5 +1,6 @@
 <?php
 
+use App\Products;
 use Illuminate\Http\Request;
 
 /*
